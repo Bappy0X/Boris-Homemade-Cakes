@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% macro navItem(title, link) %}
+<li class="h2 px-2 py-1 ml-3"><a href="{{ link }}" class="text-light">{{ title }}</a></li>
+{% endmacro %}
+
+{% macro navbar() %}
+<div id="navbar" class="text-right">
+    <ul class="my-3 mx-3">
+        {{ navItem("home") }}
+        {{ navItem("contact") }}
+        {{ navItem("products") }}
+    </ul>
+</div>
+{% endmacro %}
+
+{% block content %}
+<div id="header">
+    {{ navbar() }}
+    <div id="logoPlaceholder" class="mx-auto rounded-circle"></div>
+</div>
+<h1 class="display-4 text-center mb-3 py-3 bg-info">Boris' Home Made Cakes</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <h1 class="text-center">About Us</h1>
+            <hr>
+            <p>Boris' Home Made Cakes is a family run, family funded business. We make the tastiest cakes for our customers.</p>
+        </div>
+        <div class="col-4">
+            <h1 class="text-center">We Care</h1>
+            <hr>
+            <p>All our products are hand crafted by our in-house dedicated chefs. They love to bake, and love to provide.<br>We tailor our experience for all of our clients.</p>
+            <ul>
+                <li><a href="phone:07518387243">Phone Us</a></li>
+                <li><a href="mailto:josh@bappy0x.me">Email In</a></li>
+            </ul>
+        </div>
+        <div class="col-4">
+            <h1 class="text-center">Products</h1>
+            <hr>
+            <p>We provide a massive range of products for our incredible clients, tell us what you like!</p>
+            <ul>
+                <li><a href="products/angel_cake.html">Angel Cake</a></li>
+                <li><a href="products/battenburg_cakes.html">Battenburg Cakes</a></li>
+                <li><a href="products/flapjacks.html">Flapjacks</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <hr>
+            <h1>test</h1>
+        </div>
+    </div>
+</div>
+{% endblock %}
