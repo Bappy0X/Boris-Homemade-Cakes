@@ -1,57 +1,51 @@
 {% extends "base.html" %}
 
-{% macro navItem(title, link) %}
-<li class="h2 px-2 py-1 ml-3"><a href="{{ link }}" class="text-light">{{ title }}</a></li>
-{% endmacro %}
-
-{% macro navbar() %}
-<div id="navbar" class="text-right">
-    <ul class="my-3 mx-3">
-        {{ navItem("home") }}
-        {{ navItem("contact") }}
-        {{ navItem("products") }}
-    </ul>
+{% macro productCard(title) %}
+<div class="col-6 px-2">
+    <div class="card">
+        <img src="https://3.bp.blogspot.com/-7LC4sFkVk7o/UnxElWj78QI/AAAAAAAADBU/j67ctvnywFY/s1600/551232_719158624764426_260511229_n.jpg" class="card-img-top"/>
+        <div class="card-body">
+            <h3 class="card-title">title{{ title }}</h3>
+            <p class="card-text">This is the body</p>
+            <button class="btn btn-outline-dark btn-block">View Product</button>
+        </div>
+    </div>
 </div>
 {% endmacro %}
 
 {% block content %}
 <div id="header">
-    {{ navbar() }}
-    <div id="logoPlaceholder" class="mx-auto rounded-circle"></div>
-</div>
-<h1 class="display-4 text-center mb-3 py-3 bg-info">Boris' Home Made Cakes</h1>
-<div class="container">
-    <div class="row">
-        <div class="col-4">
-            <h1 class="text-center">About Us</h1>
-            <hr>
-            <p>Boris' Home Made Cakes is a family run, family funded business. We make the tastiest cakes for our customers.</p>
-        </div>
-        <div class="col-4">
-            <h1 class="text-center">We Care</h1>
-            <hr>
-            <p>All our products are hand crafted by our in-house dedicated chefs. They love to bake, and love to provide.<br>We tailor our experience for all of our clients.</p>
-            <ul>
-                <li><a href="phone:07518387243">Phone Us</a></li>
-                <li><a href="mailto:josh@bappy0x.me">Email In</a></li>
-            </ul>
-        </div>
-        <div class="col-4">
-            <h1 class="text-center">Products</h1>
-            <hr>
-            <p>We provide a massive range of products for our incredible clients, tell us what you like!</p>
-            <ul>
-                <li><a href="products/angel_cake.html">Angel Cake</a></li>
-                <li><a href="products/battenburg_cakes.html">Battenburg Cakes</a></li>
-                <li><a href="products/flapjacks.html">Flapjacks</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <hr>
-            <h1>test</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-5 d-flex align-items-center">
+                <h1 class="m-0">Boris - Delicious Cakes, straight to your door!</h1>
+            </div>
+            <div class="col row no-gutters">
+                <div class="col-auto mx-3 d-flex align-items-center" style="font-size: 1.5rem;">
+                    <a href="#productCarousel" role="button" data-slide="prev">
+                        <i class="fas fa-chevron-left text-dark"></i>
+                    </a>
+                </div>
+                <div id="productCarousel" class="carousel slide col" data-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for i in range(3) %}
+                        <div class="carousel-item {% if i == 0 %}active{% endif %}">
+                            <div class="row no-gutters">
+                                {{ productCard(i) }}
+                                {{ productCard(i) }}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-auto mx-3 d-flex align-items-center" style="font-size: 1.5rem;">
+                    <a href="#productCarousel" role="button" data-slide="next">
+                        <i class="fas fa-chevron-right text-dark"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+<div id="content"></div>
 {% endblock %}
