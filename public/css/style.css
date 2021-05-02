@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+:root {
+    --background: rgb(245, 245, 245);
+    --background2: rgb(235, 235, 235);
+    --foreground: rgb(153, 50, 204);
+    --foreground2: rgb(110, 45, 180);
+}
+
+h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
+    font-family: 'Dancing Script', cursive !important;
+}
+p {
+    font-family: 'Montserrat', sans-serif;
+}
+a {
+    color: var(--foreground);
+}
+a:hover {
+    color: var(--foreground);
+}
+
+.bg-alt-1 {
+    background-color: var(--background);
+}
+.bg-alt-2 {
+    background-color: var(--background2);
+}
+
+.bg-primary {
+    background-color: var(--foreground) !important;
+    color: var(--background) !important;
+}
+.border-primary {
+    border-color: var(--foreground) !important;
+}
+
+#header ul>li {
+    display: inline-block;
+}
+#header ul>li>a:hover {
+    text-decoration: none;
+}
+
+.card, .card-img-top, .btn {
+    border-radius: 25px;
+}
+.card-img-top {
+    padding: 10px;
+}
+.card-body {
+    padding: -5px;
+}
+
+.socialIcon {
+    font-size: 2.2rem;
+}

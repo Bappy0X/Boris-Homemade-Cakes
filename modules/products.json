@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Super Cupcakes",
+        "slug": "super-cupcakes",
+        "description": "A unicorn cupcake",
+        "img": "https://sophiaskitchen.blog/wp-content/uploads/2017/07/IMG_4477-e1501525659741.jpg",
+        "inStock": true
+    },
+    {
+        "name": "Wedding Cake",
+        "slug": "wedding-cake",
+        "description": "cool",
+        "img": "https://3.bp.blogspot.com/-7LC4sFkVk7o/UnxElWj78QI/AAAAAAAADBU/j67ctvnywFY/s1600/551232_719158624764426_260511229_n.jpg",
+        "inStock": true
+    }
+]

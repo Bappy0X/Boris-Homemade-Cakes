@@ -14,76 +14,33 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
     
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
-
-        :root {
-            --background: rgb(235, 235, 235);
-            --foreground: DarkOrchid;
-        }
-        body {
-            background-color: var(--background);
-        }
-
-        h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
-            font-family: 'Dancing Script', cursive !important;
-        }
-        p {
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .header {
-            text-align: center;
-        }
-        #logoPlaceholder {
-            margin-top: calc(50vh - 250px);
-            margin-bottom: calc(50vh - 250px);
-            height: 250px;
-            width: 250px;
-        }
-        #navbar > ul > li {
-            display: inline-block;
-            background-color: rgb(235, 216, 191);
-        }
-        .bg-primary {
-            background-color: var(--foreground) !important;
-            color: var(--background) !important;
-        }
-
-        .card, .card-img-top, .btn {
-            border-radius: 25px;
-        }
-        .card-img-top {
-            padding: 10px;
-        }
-        .card-body {
-            padding: -5px;
-        }
-    </style>
-    {# FUTURE: Move this to seperate .css file #}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+    {#- FUTURE: Move this to seperate .css file #}
+    {%- from "macros.html" import socialIcon %}
 </head>
 <body>
-    {% macro navItem(title, link) %}
-    <li class="h2 px-2 py-1 ml-3 bg-primary rounded-lg shadow-sm"><a href="{{ link }}" class="text-light">{{ title }}</a></li>
-    {% endmacro %}
-    
-    {% macro navbar() %}
-    <div id="navbar" class="text-right">
-        <ul class="my-3 mx-3">
-            {{ navItem("home") }}
-            {{ navItem("contact") }}
-            {{ navItem("products") }}
-        </ul>
-    </div>
-    {% endmacro %}
-    <div id="navbar" class="py-3 mb-3 bg-info">
+    <!--Start Header-->
+    <div id="header" class="py-3 bg-primary">
         <div class="container">
-            <p id="scrollText" class="m-0" style="font-size: 2rem;">Boris' Homemade Cakes</p>
+            <div class="row no-gutters">
+                <div class="col-12 col-xl-5 mb-3 mb-xl-0">
+                    <h2 class="m-0">🧁 <span id="scrollText"></span></h2>
+                </div>
+                <div class="col text-center text-xl-right">
+                    <ul class="mx-3 my-0 p-0">
+                        {%- macro navItem(title, link) %}
+                        <li class="mx-3 my-0 py-1"><a href="{{ link }}" class="mb-0 h4 text-light">{{ title }}</a></li>
+                        {%- endmacro %}
+                        {%- for title, link in [("Home", url_for("index")), ("Tray Bakes", ""), ("Special Occasions", ""), ("Get in Contact", "")] %}
+                        {{- navItem(title, link) }}
+                        {%- endfor %}
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
     <script type="text/javascript">
-        const title = "Boris' Homemade Cakes. 🧁"
+        const title = "Boris' Homemade Cakes"
         var currentChar = 0
         function addCharacter() {
             $("#scrollText").html(title.substr(0, currentChar) + "|");
@@ -96,6 +53,47 @@
         }
         addCharacter();
     </script>
-    {% block content %}{% endblock %}
+    <!--End Header-->
+
+    <!--Start Content-->
+    <div id="content">
+        {%- block content %}{% endblock %}
+    </div>
+    <!--End Content-->
+
+    <!--Start Footer-->
+    <div id="footer">
+        <div class="py-3 bg-primary">
+            <div class="container">
+                <div class="row no-gutters">
+                    <div class="col-12 text-center col-xl-4 text-xl-left">
+                        <h4>Made with <i class="fas fa-heart"></i> by <a class="text-light" href="">joshv.tech</a></h4>
+                        <ul class="p-0" style="list-style: none;">
+                            {%- macro languageIcon(icon, title) %}
+                            <li class="d-inline-block d-xl-block">
+                                <p class="m-0"><i class="fab fa-{{ icon }} fa-fw"></i> {{ title }}</p>
+                            </li>
+                            {%- endmacro %}
+                            {{- languageIcon("python", "Python/Flask") }}
+                            {{- languageIcon("bootstrap", "Bootstrap") }}
+                            {{- languageIcon("html5", "HTML") }}
+                            {{- languageIcon("css3-alt", "CSS") }}
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <h4>Site Map</h4>
+                        <p>This is a test</p>
+                    </div>
+                    <div class="col">
+                        <h4>Check Us Out!</h4>
+                        {%- for i in getSocialMedias() %}
+                        {{- socialIcon(i["name"], i["url"], "light") | indent(24, True)}}
+                        {%- endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End Footer-->
 </body>
 </html>

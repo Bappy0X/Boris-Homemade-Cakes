@@ -1,0 +1,30 @@
+{
+    "Mon": {
+        "opening": 8,
+        "closing": 19
+    },
+    "Tue": {
+        "opening": 8,
+        "closing": 19
+    },
+    "Wed": {
+        "opening": 9,
+        "closing": 18
+    },
+    "Thu": {
+        "opening": 8,
+        "closing": 19
+    },
+    "Fri": {
+        "opening": 8,
+        "closing": 19
+    },
+    "Sat": {
+        "opening": 10,
+        "closing": 18
+    },
+    "Sun": {
+        "opening": null,
+        "closing": null
+    }
+}

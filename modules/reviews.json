@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Daniel",
+        "comment": "Quite the spiffing supplement I require. I carry 4 cupcakes in my waistcoat.",
+        "stars": 4,
+        "img": "/static/img/people/daniel.bmp"
+    },
+    {
+        "name": "President Obama",
+        "comment": "Excellent quality cupcakes, lovely staff! Would recommend!",
+        "stars": 5,
+        "img": "/static/img/people/president_obama.bmp"
+    },
+    {
+        "name": "Malcolm",
+        "comment": "Excellent quality cupcakes, lovely staff! Would recommend!",
+        "stars": 4.5,
+        "img": "/static/img/people/malcolm.bmp"
+    }
+]
