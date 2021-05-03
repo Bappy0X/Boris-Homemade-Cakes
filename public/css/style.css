@@ -9,11 +9,16 @@
 }
 
 h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
-    font-family: 'Dancing Script', cursive !important;
+    font-family: "Dancing Script", cursive !important;
 }
 p {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
+
+.accent {
+    font-family: "Dancing Script", cursive !important;
+}
+
 a {
     color: var(--foreground);
 }

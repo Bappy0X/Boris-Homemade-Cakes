@@ -13,14 +13,17 @@ def getSocialMedias():
     with open("modules/socialMedias.json") as f:
         return load(f)
 
+def getOpeningTimes():
+    with open("modules/openingTimes.json") as f:
+        return load(f)
+
 def isOpen():
     now = dt.now()
 
     hour = now.hour
     day = now.weekday()
 
-    with open("modules/openingTimes.json") as f:
-        data = load(f)
+    data = getOpeningTimes()
 
     today = list(data.values())[day]
     if today.get("opening") and today.get("closing"):
