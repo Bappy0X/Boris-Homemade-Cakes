@@ -31,7 +31,7 @@
                         {%- macro navItem(title, link) %}
                         <li class="mx-3 my-0 py-1"><a href="{{ link }}" class="mb-0 h4 text-light">{{ title }}</a></li>
                         {%- endmacro %}
-                        {%- for title, link in [("Home", url_for("index")), ("Tray Bakes", ""), ("Special Occasions", ""), ("Get in Contact", "")] %}
+                        {%- for title, link in [("Home", url_for("index")), ("Tray Bakes", url_for("trayBakes")), ("Special Occasions", url_for("specialOccasions")), ("Get in Contact", url_for("contact"))] %}
                         {{- navItem(title, link) }}
                         {%- endfor %}
                     </ul>
@@ -57,7 +57,9 @@
 
     <!--Start Content-->
     <div id="content">
+        {%- filter indent(width=8) %}
         {%- block content %}{% endblock %}
+        {%- endfilter %}
     </div>
     <!--End Content-->
 
@@ -85,11 +87,24 @@
                     </div>
                     <div class="col px-md-2 text-md-right px-xl-0 text-xl-left">
                         <h4>Site Map</h4>
-                        <ul style="direction: rtl;">
-                            {% for i in range(5) %}
-                            <li>{{ i }}</li>
-                            {% endfor %}
-                        </ul>
+                        {%- macro mapItem(url) %}
+                        <li>
+                            <p class="m-0"><a class="text-light" href="{{ url }}">{{ url }}</a></p>
+                        </li>
+                        {%- endmacro %}
+                        {%- set endpoints = getEndpoints() %}
+                        {%- set midpoint = len(endpoints)//2 %}
+                        <div class="row">
+                            {%- for i in [endpoints[midpoint:], endpoints[:midpoint]] %}
+                            <div class="col">
+                                <ul class="list-unstyled">
+                                    {%- for _i in i %}
+                                    {{- mapItem(_i) | indent(12, True) }}
+                                    {%- endfor %}
+                                </ul>
+                            </div>
+                            {%- endfor %}
+                        </div>
                     </div>
                     <div class="col px-md-2 px-xl-0">
                         <h4>Check Us Out!</h4>

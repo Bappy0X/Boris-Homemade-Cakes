@@ -1,110 +1,110 @@
 {% extends "base.html" %}
 
 {%- block content %}
-        <div class="bg-alt-1 py-3">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-5 d-flex align-items-center mb-3 mb-lg-0">
-                        <div class="row no-gutters">
-                            <div class="col-12 col-xl-auto text-center">
-                                <p style="font-size: 4rem;">🧁</p>
-                            </div>
-                            <div class="col">
-                                <h1 class="m-0">Boris - Delicious Cakes, straight to your door!</h1>
-                            </div>
-                            <div class="col-12">
-                                <p>Enjoy our premium quality cakes, delivered directly to your door!</p>
-                                {%- if isOpen() %}
-                                <h4 class="text-success m-0"><i class="fas fa-store"></i> We're open!</h4>
-                                <p>Come visit our store on Canal St. <a href="">View Map</a></p>
-                                {%- else %}
-                                <h4 class="text-danger m-0"><i class="fas fa-store-slash"></i> Sorry, we're closed!</h4>
-                                <p>We'll be opening soon! <a href="">View Opening Times</a></p>
-                                {%- endif %}
-                            </div>
-                            <div class="col-12 text-center text-xl-left">
-                                {%- for i in getSocialMedias() %}
-                                {{- socialIcon(i["name"], i["url"], "dark") | indent(32, True) }}
-                                {%- endfor %}
-                            </div>
-                        </div>
+<div class="bg-alt-1 py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 d-flex align-items-center mb-3 mb-lg-0">
+                <div class="row no-gutters">
+                    <div class="col-12 col-xl-auto text-center">
+                        <p style="font-size: 4rem;">🧁</p>
                     </div>
-                    <div class="col row no-gutters">
-                        <div class="col-auto mx-3 d-flex align-items-center" style="font-size: 1.5rem;">
-                            <a href="#productCarousel" role="button" data-slide="prev">
-                                <i class="fas fa-chevron-left text-dark"></i>
-                            </a>
-                        </div>
-                        <div id="productCarousel" class="carousel slide col" data-ride="carousel">
-                            <div class="carousel-inner">
-                                {%- macro productCard(title, body, img, slug) %}
-                                        <div class="col-6 px-2">
-                                            <div class="card">
-                                                <img src="{{ img }}" class="card-img-top"/>
-                                                <div class="card-body pt-0">
-                                                    <h3 class="card-title">{{ title }}</h3>
-                                                    <p class="card-text">{{ body }}</p>
-                                                    <a class="btn btn-outline-dark btn-block" role="button" href="">View Product</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                {%- endmacro %}
-                                {%- set products = getProducts() %}
-                                {%- for i, (v, vv) in enumerate(zip(products[::2], products[1::2])) %}
-                                <div class="carousel-item {% if i == 0 %}active{% endif %}">
-                                    <div class="row no-gutters">
-                                        {{- productCard(v["name"], v["description"], v["img"], v["slug"]) }}
-                                        {{- productCard(vv["name"], vv["description"], vv["img"], vv["slug"]) }}
-                                    </div>
-                                </div>
-                                {%- endfor %}
-                            </div>
-                        </div>
-                        <div class="col-auto mx-3 d-flex align-items-center" style="font-size: 1.5rem;">
-                            <a href="#productCarousel" role="button" data-slide="next">
-                                <i class="fas fa-chevron-right text-dark"></i>
-                            </a>
-                        </div>
+                    <div class="col">
+                        <h1 class="m-0">Boris - Delicious Cakes, straight to your door!</h1>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="bg-alt-1 py-3 bg-alt-2">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-sm-6 col-lg-4">
-                        <h3 class="text-center">About Us</h3>
-                        <hr class="w-75 border-primary">
-                        <p><span class="accent xl">Spice up your day!</span> Here at Boris' Homemade Cakes we aim to fulfill your every tasteful need - producing the highest quality cakes for miles! We satisfy every occasion and</p>
+                    <div class="col-12">
+                        <p>Enjoy our premium quality cakes, delivered directly to your door!</p>
+                        {%- if isOpen() %}
+                        <h4 class="text-success m-0"><i class="fas fa-store"></i> We're open!</h4>
+                        <p>Come visit our store on Canal St. <a href="">View Map</a></p>
+                        {%- else %}
+                        <h4 class="text-danger m-0"><i class="fas fa-store-slash"></i> Sorry, we're closed!</h4>
+                        <p>We'll be opening soon! <a href="">View Opening Times</a></p>
+                        {%- endif %}
                     </div>
-                    <div class="col-12 col-sm-6 col-lg-4">
-                        <h3 class="text-center">Above Standard</h3>
-                        <hr class="w-75 border-primary">
-                        <p>We constantly build and strive to produce the best quality cakes for every occasion, specially designed for your every need. We consistently push boundaries and innovate on the best ideas from our customers.</p>
-                    </div>
-                    <div class="col-12 col-md">
-                        <h3 class="text-center">Our Customers</h3>
-                        <hr class="w-75 border-primary">
-                        <p></p>
-                        {%- macro review(name, comment, stars, img) %}
-                        <div class="row no-gutters my-3">
-                            <div class="col-3 col-md-2 col-lg-4 mb-0 mb-md-2 mb-lg-0 px-3 d-flex align-items-center">
-                                <img src="{{ img }}" alt="{{ name }}" class="w-100 rounded-circle"/>
-                            </div>
-                            <div class="col">
-                                <h4 class="m-0">{{ name }}</h4>
-                                <div class="text-warning">
-                                    {% for i in range(5) %}{% if i <= stars-1 %}<i class="fas fa-star"></i>{% elif (stars-1)%1 != 0 %}<i class="fas fa-star-half-alt"></i>{% else %}<i class="far fa-star"></i>{% endif %}{% endfor %}
-                                </div>
-                                <p class="m-0">{{ comment }}</p>
-                            </div>
-                        </div>
-                        {%- endmacro %}
-                        {%- for i in getReviews() %}
-                        {{- review(i["name"], i["comment"], i["stars"], i["img"]) }}
+                    <div class="col-12 text-center text-xl-left">
+                        {%- for i in getSocialMedias() %}
+                        {{- socialIcon(i["name"], i["url"], "dark") | indent(32, True) }}
                         {%- endfor %}
                     </div>
                 </div>
             </div>
+            <div class="col row no-gutters">
+                <div class="col-auto mx-3 d-flex align-items-center" style="font-size: 1.5rem;">
+                    <a href="#productCarousel" role="button" data-slide="prev">
+                        <i class="fas fa-chevron-left text-dark"></i>
+                    </a>
+                </div>
+                <div id="productCarousel" class="carousel slide col" data-ride="carousel">
+                    <div class="carousel-inner">
+                        {%- macro productCard(title, body, img, slug) %}
+                                <div class="col-6 px-2">
+                                    <div class="card">
+                                        <img src="{{ img }}" class="card-img-top"/>
+                                        <div class="card-body pt-0">
+                                            <h3 class="card-title">{{ title }}</h3>
+                                            <p class="card-text">{{ body }}</p>
+                                            <a class="btn btn-outline-dark btn-block" role="button" href="">View Product</a>
+                                        </div>
+                                    </div>
+                                </div>
+                        {%- endmacro %}
+                        {%- set products = getProducts() %}
+                        {%- for i, (v, vv) in enumerate(zip(products[::2], products[1::2])) %}
+                        <div class="carousel-item {% if i == 0 %}active{% endif %}">
+                            <div class="row no-gutters">
+                                {{- productCard(v["name"], v["description"], v["img"], v["slug"]) }}
+                                {{- productCard(vv["name"], vv["description"], vv["img"], vv["slug"]) }}
+                            </div>
+                        </div>
+                        {%- endfor %}
+                    </div>
+                </div>
+                <div class="col-auto mx-3 d-flex align-items-center" style="font-size: 1.5rem;">
+                    <a href="#productCarousel" role="button" data-slide="next">
+                        <i class="fas fa-chevron-right text-dark"></i>
+                    </a>
+                </div>
+            </div>
         </div>
+    </div>
+</div>
+<div class="bg-alt-1 py-3 bg-alt-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-6 col-lg-4">
+                <h3 class="text-center">About Us</h3>
+                <hr class="w-75 border-primary">
+                <p><span class="accent xl">Spice up your day!</span> Here at Boris' Homemade Cakes we aim to fulfill your every tasteful need - producing the highest quality cakes for miles! We provide for every occasion! From weddings, get-togethers, to even those Netflix nights</p>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <h3 class="text-center">Above Standard</h3>
+                <hr class="w-75 border-primary">
+                <p>We constantly build and strive to produce the best quality cakes for every occasion, specially designed for your every need. We consistently push boundaries and innovate on the best ideas from our customers.</p>
+            </div>
+            <div class="col-12 col-md">
+                <h3 class="text-center">Our Customers</h3>
+                <hr class="w-75 border-primary">
+                <p></p>
+                {%- macro review(name, comment, stars, img) %}
+                <div class="row no-gutters my-3">
+                    <div class="col-3 col-md-2 col-lg-4 mb-0 mb-md-2 mb-lg-0 px-3 d-flex align-items-center">
+                        <img src="{{ img }}" alt="{{ name }}" class="w-100 rounded-circle"/>
+                    </div>
+                    <div class="col">
+                        <h4 class="m-0">{{ name }}</h4>
+                        <div class="text-warning">
+                            {% for i in range(5) %}{% if i <= stars-1 %}<i class="fas fa-star"></i>{% elif (stars-1)%1 != 0 %}<i class="fas fa-star-half-alt"></i>{% else %}<i class="far fa-star"></i>{% endif %}{% endfor %}
+                        </div>
+                        <p class="m-0">{{ comment }}</p>
+                    </div>
+                </div>
+                {%- endmacro %}
+                {%- for i in getReviews() %}
+                {{- review(i["name"], i["comment"], i["stars"], i["img"]) }}
+                {%- endfor %}
+            </div>
+        </div>
+    </div>
+</div>
 {%- endblock %}

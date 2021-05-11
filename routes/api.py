@@ -4,7 +4,6 @@ from modules.data import getReviews, getProducts, getSocialMedias, getOpeningTim
 
 bp = Blueprint("api", __name__, url_prefix="/api")
 
-
 @bp.route("/")
 def index():
     return jsonify(data=[i.endpoint for i in current_app.url_map.iter_rules()])
@@ -24,14 +23,14 @@ def reviews():
     )
 
 @bp.route("/social-medias")
-def social_medias():
+def socialMedias():
     return jsonify(
         success=True,
         data=getSocialMedias()
     )
 
 @bp.route("/opening-times")
-def opening_times():
+def openingTimes():
     data = getOpeningTimes()
     data["isOpen"] = isOpen()
 
