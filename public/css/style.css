@@ -6,12 +6,13 @@
     --background2: rgb(235, 235, 235);
     --foreground: rgb(153, 50, 204);
     --foreground2: rgb(110, 45, 180);
+    --foregroundFaint: rgb(153, 50, 204, .2);
 }
 
 h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
     font-family: "Dancing Script", cursive !important;
 }
-p {
+p, .p {
     font-family: "Montserrat", sans-serif;
 }
 
@@ -24,6 +25,39 @@ a {
 }
 a:hover {
     color: var(--foreground);
+}
+
+.btn-primary:hover {
+    background-color: var(--foreground2);
+    border-color: var(--foreground2);
+}
+.btn-primary:active, .btn-primary:focus {
+    background-color: var(--foreground2) !important;
+    border-color: var(--foreground2) !important;
+    box-shadow: 0 0 0 .2rem var(--foregroundFaint) !important;
+}
+
+.btn-outline-primary {
+    color: var(--foreground);
+    border-color: var(--foreground);
+}
+.btn-outline-primary:hover {
+    background-color: var(--foreground);
+    border-color: var(--foreground);
+}
+.btn-outline-primary:active {
+    background-color: var(--foreground2) !important;
+    border-color: var(--foreground2) !important;
+}
+
+.btn-primary {
+    background-color: var(--foreground);
+    border-color: var(--foreground);
+}
+
+.form-control:focus, .btn-outline-primary:focus {
+    border-color: var(--foreground);
+    box-shadow: 0 0 0 .2rem var(--foregroundFaint);
 }
 
 .bg-alt-1 {

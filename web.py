@@ -1,7 +1,7 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request
 
 from routes import blueprints
-from modules.data import getProducts, getReviews, getSocialMedias, isOpen
+from modules.data import getProducts, getReviews, getSocialMedias, getOpeningTimes, isOpen
 
 from re import findall,sub
 
@@ -13,8 +13,9 @@ def createApp():
         "getProducts": getProducts,
         "getReviews": getReviews,
         "getSocialMedias": getSocialMedias,
-        "getEndpoints": lambda: [i for i in app.url_map.iter_rules() if not i.endpoint == "static"],
+        "getOpeningTimes": getOpeningTimes,
         "isOpen": isOpen,
+        "getEndpoints": lambda: [i for i in app.url_map.iter_rules() if not i.endpoint == "static"],
         "len": len,
         "enumerate": enumerate,
         "zip": zip
@@ -32,8 +33,10 @@ def createApp():
     def specialOccasions():
         return "Special Occasions"
 
-    @app.route("/contact")
+    @app.route("/contact", methods=["GET", "POST"])
     def contact():
+        if request.method == "POST":
+            print(request.form)
         return render_template("pages/contact.html")
 
     for i in blueprints:
