@@ -34,7 +34,7 @@ def createApp():
 
     @app.route("/contact")
     def contact():
-        return "Contact"
+        return render_template("pages/contact.html")
 
     for i in blueprints:
         app.register_blueprint(i)

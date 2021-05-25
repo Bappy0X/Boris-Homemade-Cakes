@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Contact{% endblock %}
+
+{%- block content %}
+<div class="bg-alt-1 py-3">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-12 row no-gutters">
+                <div class="col-12 col-md text-center text-md-left">
+                    <h1><i class="far fa-paper-plane fa-fw mr-2"></i>Contact Us</h1>
+                </div>
+                <div class="col-auto d-flex  mx-auto">
+                    <div class="my-auto text-center">
+                        {%- for i in getSocialMedias() %}
+                        {{- socialIcon(i["name"], i["url"], "dark") | indent(24, True) }}
+                        {%- endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <p>Do you have a special request, </p>
+            </div>
+            <div class="col-6">
+                <h3>Opening Times</h3>
+            </div>
+            <div class="col">
+                <h3>Find us</h3>
+            </div>
+        </div>
+    </div>
+</div>
+{%- endblock %}

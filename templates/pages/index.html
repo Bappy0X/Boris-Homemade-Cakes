@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% block title %}Home{% endblock %}
+
 {%- block content %}
 <div class="bg-alt-1 py-3">
     <div class="container">
@@ -16,10 +18,10 @@
                         <p>Enjoy our premium quality cakes, delivered directly to your door!</p>
                         {%- if isOpen() %}
                         <h4 class="text-success m-0"><i class="fas fa-store"></i> We're open!</h4>
-                        <p>Come visit our store on Canal St. <a href="">View Map</a></p>
+                        <p>Come visit our store on Canal St. <a href="{{ url_for('contact') }}#map">View Map</a></p>
                         {%- else %}
                         <h4 class="text-danger m-0"><i class="fas fa-store-slash"></i> Sorry, we're closed!</h4>
-                        <p>We'll be opening soon! <a href="">View Opening Times</a></p>
+                        <p>We'll be opening soon! <a href="{{ url_for('contact') }}#times">View Opening Times</a></p>
                         {%- endif %}
                     </div>
                     <div class="col-12 text-center text-xl-left">
