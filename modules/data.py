@@ -29,3 +29,20 @@ def isOpen():
     if today.get("opening") and today.get("closing"):
         return hour >= today["opening"] and hour < today["closing"]
     return False
+
+class Enquiries:
+    def __init__(self):
+        ...
+
+    def add(self, name: str, email: str, message: str, number: str=None):
+        data = self.read()
+        data.append({
+            "name": name,
+            "email": email,
+            "message": message,
+            "number": number
+        })
+
+    def read(self):
+        with open("modules/enquiries.json", "r") as f:
+            return load(f)
