@@ -1,4 +1,4 @@
-from json import load
+from json import load, dump
 from datetime import datetime as dt
 
 def getReviews():
@@ -34,14 +34,16 @@ class Enquiries:
     def __init__(self):
         ...
 
-    def add(self, name: str, email: str, message: str, number: str=None):
+    def add(self, name: str, email: str, message: str, phone: str=None):
         data = self.read()
         data.append({
             "name": name,
             "email": email,
-            "message": message,
-            "number": number
+            "phone": phone,
+            "message": message
         })
+        with open("modules/enquiries.json", "w") as f:
+            dump(data, f, indent=4)
 
     def read(self):
         with open("modules/enquiries.json", "r") as f:

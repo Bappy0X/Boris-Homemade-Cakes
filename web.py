@@ -1,9 +1,11 @@
 from flask import Flask, render_template, url_for, request
 
 from routes import blueprints
-from modules.data import getProducts, getReviews, getSocialMedias, getOpeningTimes, isOpen
+from modules.data import getProducts, getReviews, getSocialMedias, getOpeningTimes, isOpen, Enquiries
 
 from re import findall,sub
+
+enquiriesApi = Enquiries()
 
 def createApp():
     app = Flask(__name__)
@@ -37,6 +39,7 @@ def createApp():
     def contact():
         if request.method == "POST":
             print(request.form)
+            enquiriesApi.add(**request.form)
         return render_template("pages/contact.html")
 
     for i in blueprints:
