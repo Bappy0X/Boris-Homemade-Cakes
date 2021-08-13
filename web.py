@@ -27,13 +27,13 @@ def createApp():
     def index():
         return render_template("pages/index.html")
 
-    @app.route("/tray-bakes")
-    def trayBakes():
-        return "Tray Bakes"
+    @app.route("/our-specialties")
+    def ourSpecialties():
+        return render_template("pages/ourSpecialties.html")
 
     @app.route("/special-occasions")
     def specialOccasions():
-        return "Special Occasions"
+        return render_template("pages/specialOccasions.html")
 
     @app.route("/contact", methods=["GET", "POST"])
     def contact():

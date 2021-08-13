@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block title %}Special Occasions{% endblock %}
+
+{%- block content %}
+<div class="bg-alt-1 py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h1 class="text-center">Special Occasions</h1>
+                <p>Are you looking for something a little extra? Well look no further! Here at Boris' Homemade Cakes we can supply for every occasion! You could even enjoy some free extras too!</p>
+            </div>
+            <div class="col-6">
+                <h1 class="text-center">Special Occasions</h1>
+                <p></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bg-alt-2 py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-lg-6 mx-auto text-center">
+                <h3>Share Us!</h3>
+                <hr class="w-75 border-primary">
+                <p>Our business starts with our customers, we love to hear about your experiences! Tell us how we did, and help to share the word so everybody can celebrate and have a great time with us!</p>
+                <div class="my-3">
+                    {%- for i in getSocialMedias() %}
+                    {{- socialIcon(i["name"], i["url"], "dark") | indent(24, True) }}
+                    {%- endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bg-alt-1 py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 align-self-center">
+                <div class="text-center">
+                    <h1>Weddings</h1>
+                    <p class="badge badge-primary ml-2 align-top p" style="font-size: 1.2rem;">Free Extras!</p>
+                </div>
+                <p>Congratulations! Celebrate your life-long achievement with us! Get a free 8pk of our favourite cupcakes to share with your guests!</p>
+            </div>
+            <div class="col">
+                <img class="w-100 rounded-lg" src="{{ url_for('static', filename='img/specialOccasions/wedding.jpg') }}" style="max-height: 400px;">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bg-alt-2 py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <img class="w-100 rounded-lg" src="{{ url_for('static', filename='img/specialOccasions/office.jpg') }}" style="max-height: 400px;">
+            </div>
+            <div class="col align-self-center">
+                <h1 class="text-center">Corporate Get-Togethers</h1>
+                <p>There's nothing quite like getting the team together and enjoying some great cake! Celebrate the team's achievements and hard efforts with us!</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bg-alt-1 py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 align-self-center">
+                <div class="text-center">
+                    <h1>Birthdays</h1>
+                    <p class="badge badge-primary ml-2 align-top p" style="font-size: 1.2rem;">Free Extras!</p>
+                </div>
+                <p>Whos birthday is it?! Happy Birthday to You! Come celebrate with us! Get a free medium sized cake when you invite 15 or more guests!</p>
+            </div>
+            <div class="col text-center">
+                <img class="rounded-lg" src="{{ url_for('static', filename='img/specialOccasions/birthday.jpg') }}" style="max-height: 400px;">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bg-alt-2 py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-lg-6 mx-auto text-center">
+                <h1>What Are You Waiting For?!</h1>
+                <p>We're here right when you need us! <a href="{{ url_for('contact') }}#contact-form">Get In Contact</a> or pop into <a href="{{ url_for('contact') }}#map">Our Store</a> to place your order, or ask a question!</p>
+            </div>
+        </div>
+    </div>
+</div>
+{%- endblock%}

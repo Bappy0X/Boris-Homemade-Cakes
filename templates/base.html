@@ -31,7 +31,7 @@
                         {%- macro navItem(title, link) %}
                         <li class="mx-3 my-0 py-1"><a href="{{ link }}" class="mb-0 h4 text-light">{{ title }}</a></li>
                         {%- endmacro %}
-                        {%- for title, link in [("Home", url_for("index")), ("Tray Bakes", url_for("trayBakes")), ("Special Occasions", url_for("specialOccasions")), ("Get in Contact", url_for("contact"))] %}
+                        {%- for title, link in [("Home", url_for("index")), ("Our Specialties", url_for("ourSpecialties")), ("Special Occasions", url_for("specialOccasions")), ("Get in Contact", url_for("contact"))] %}
                         {{- navItem(title, link) }}
                         {%- endfor %}
                     </ul>
@@ -72,7 +72,7 @@
                         <h3>🧁 Boris' Homemade Cakes</h3>
                     </div>
                     <div class="col-12 text-center col-xl-4 text-xl-left">
-                        <h4>Made with <i class="fas fa-heart"></i> by <a class="text-light" href="">joshv.tech</a></h4>
+                        <h4>Made with <i class="fas fa-heart"></i> by <a class="text-light" href="https://joshv.tech">joshv.tech</a></h4>
                         <ul class="p-0" style="list-style: none;">
                             {%- macro languageIcon(icon, title) %}
                             <li class="d-inline-block d-xl-block">

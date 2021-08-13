@@ -55,6 +55,10 @@ a:hover {
     border-color: var(--foreground);
 }
 
+.badge-primary {
+    background-color: var(--foreground) !important;
+}
+
 .form-control:focus, .btn-outline-primary:focus {
     border-color: var(--foreground);
     box-shadow: 0 0 0 .2rem var(--foregroundFaint);
